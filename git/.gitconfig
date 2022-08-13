@@ -1,0 +1,17 @@
+[user]
+    name = Srijon Saha
+    email = srijonsaha@asana.com
+	signingkey = FDB3E3FAB4CA713E
+[commit]
+	gpgsign = true
+[maintenance]
+    repo = /Users/srijonsaha/sandbox/asana
+[alias]
+    prboot = pr srijonsaha-bootcamp-project
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+[init]
+	defaultBranch = main

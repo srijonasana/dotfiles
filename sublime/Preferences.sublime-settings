@@ -1,0 +1,15 @@
+// Settings in here override those in "Default/Preferences.sublime-settings",
+// and are overridden in turn by syntax-specific settings.
+{
+	"auto_find_in_selection": true,
+	"find_selected_text": true,
+	"font_face": "Fira Code",
+	"font_size": 16,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"line_padding_bottom": 1,
+	"line_padding_top": 1,
+	"open_files_in_new_window": false,
+	"theme": "Adaptive.sublime-theme",
+	"translate_tabs_to_spaces": true
+}

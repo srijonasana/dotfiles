@@ -1,0 +1,51 @@
+# Functions
+run_in_vssh () {
+  echo "RUNNING $1"
+  vssh bash -- -l -c "\"$1\""
+}
+
+# === Aliases ===
+alias zshconfig='code ~/.zshrc'
+alias aliasconfig='code ~/.zsh_aliases'
+alias sandconfig='code ${HOME}/sandbox/asana/configure_sand/configure_sand'
+
+# Git
+alias gu='git up --rebase'
+alias gb='git branch -v'
+alias gbd='git branch -D'
+alias gp='git push origin HEAD'
+alias gsm='gco srijonsaha-master'
+alias gnm='gco next-master'
+alias gcs='git ci-status --author=srijonasana'
+
+# Asana
+alias zss='z sand sync webapp'
+
+alias jrun='run_in_vssh "jssweb run"'
+alias jrunf='run_in_vssh "jssweb run --treat_warnings_as_errors=false"'
+alias jstop='run_in_vssh "jssweb stop"'
+
+alias sand_rjm='run_in_vssh "sand_remote_job_monitor"'
+alias sand_uo='run_in_vssh "uo"'
+alias sand_js='run_in_vssh "js"'
+alias sand_js2='run_in_vssh "js2"'
+
+alias prod_uo='uo prod'
+alias prod_js='z remote js prod'
+
+# Logs
+# logs: current logs with simplified fields
+# logs50: previous 50 logs + current logs with simplified fields
+# logsv: current logs with all the fields (verbose)
+# logsv50: previous 50 logs + current logs with all the fields (verbose)
+alias logs='run_in_vssh "tail -f -n 0 /var/log/fluent/event_logs.event | jq '\''.Message | fromjson | del(.client_ip, .user_agent, .category, .cluster, .timestamp, .logged_out_session, .logged_out_session_uuid, .release_revision, .browser_name, .browser_version, .app_name, .client_app, .client_app_type, .session, .user, .mobile_app, .method, .is_probably_mobile, .host)'\'' "' 
+alias logs50='run_in_vssh "tail -f -n 50 /var/log/fluent/event_logs.event | jq '\''.Message | fromjson | del(.client_ip, .user_agent, .category, .cluster, .timestamp, .logged_out_session, .logged_out_session_uuid, .release_revision, .browser_name, .browser_version, .app_name, .client_app, .client_app_type, .session, .user, .mobile_app, .method, .is_probably_mobile, .host)'\'' "' 
+alias logsv='run_in_vssh "tail -f -n 0 /var/log/fluent/event_logs.event | jq '\''.Message | fromjson '\'' "' 
+alias logsv50='run_in_vssh "tail -f -n 50 /var/log/fluent/event_logs.event | jq '\''.Message | fromjson '\'' "'
+
+# Errors
+alias errors='run_in_vssh "tail -f /mnt/var/scribe_logs/error/error_current | jq"'
+
+# OTTO
+alias sync-otto='z sand sync webapp ipa_http_router'
+alias run-otto='run-app //asana/tools/otto:dev'
